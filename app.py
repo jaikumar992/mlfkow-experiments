@@ -2,6 +2,13 @@
 # P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
 # Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
 
+import dagshub
+dagshub.init(repo_owner='jaikumar992', repo_name='mlfkow-experiments', mlflow=True)
+
+import mlflow
+with mlflow.start_run():
+  mlflow.log_param('parameter name', 'value')
+  mlflow.log_metric('metric name', 1)
 import os
 import warnings
 import sys
@@ -80,8 +87,8 @@ if __name__ == "__main__":
 
         ## For Remote server only(DAGShub)
 
-        # remote_server_uri="https://dagshub.com/krishnaik06/mlflowexperiments.mlflow"
-        # mlflow.set_tracking_uri(remote_server_uri)
+        remote_server_uri="https://dagshub.com/jaikumar992/mlfkow-experiments.mlflow"
+        mlflow.set_tracking_uri(remote_server_uri) 
 
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
